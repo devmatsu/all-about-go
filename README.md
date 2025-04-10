@@ -42,3 +42,36 @@ It generates a binary (e.g. `main` or `main.exe`) that you can run with:
 ```bash
 ./main
 ```
+
+## How to Manage Dependencies in Go
+Go uses `go mod` to manage project dependencies, similar to `package.json` in Node.js.
+
+### Initializing a Go project
+Inside your project folder, run:
+```bash
+go mod init <module-name>
+```
+This command will create a `go.mod` file, which defines your module name and tracks dependencies.
+
+### Installing dependencies
+To install a new package, use:
+```bash
+go get <package-path>
+```
+
+For example:
+```bash
+go get github.com/gin-gonic/gin
+```
+
+This will:
+- Add the package to `go.mod`
+- Generate or update `go.sum` with checksums for dependency integrity
+
+### About `go.mod` and `go.sum`
+| File     | Purpose | Similar to |
+|----------|---------|------------|
+| `go.mod` | Lists the module name and required dependencies | `package.json` |
+| `go.sum` | Stores checksums for dependencies to ensure integrity and reproducibility | `package-lock.json` |
+
+Both files should always be versioned and committed to your repository.
